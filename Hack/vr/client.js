@@ -4,11 +4,17 @@
 
 // Auto-generated content.
 import {VRInstance} from 'react-vr-web';
+import * as THREE from 'three';
+
+import ThreeDOFRayCaster from '../ThreeDOFRayCaster';
 
 function init(bundle, parent, options) {
+   const scene = new THREE.Scene();
   const vr = new VRInstance(bundle, 'Hack', parent, {
     // Add custom options here
-    cursorVisibility: 'visible',
+    raycasters: [new ThreeDOFRayCaster(scene)],
+    cursorVisibility: 'auto',
+    scene: scene,
     ...options,
   });
   vr.render = function() {
